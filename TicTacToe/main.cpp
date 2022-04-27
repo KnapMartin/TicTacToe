@@ -1,10 +1,14 @@
 #include "mainwindow.h"
 
+#include "constants.h"
+#include "gamewidget.h"
+
 #include <QApplication>
 #include <QDebug>
+
 #include <iostream>
 #include <stdlib.h>
-#include "constants.h"
+
 
 struct InputParameters
 {
@@ -35,7 +39,7 @@ InputParameters mainArgsParser(int argc, char *argv[])
 
     // assemble params
     InputParameters params;
-    int firstParam = atoi(argv[1]);
+    int firstParam = atoi(argv[::gameSizeIdndex]);
     if (!firstParam)
     {
         std::cout << "Not a number!\n";
@@ -48,11 +52,12 @@ InputParameters mainArgsParser(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
 
     InputParameters gameParams = mainArgsParser(argc, argv);
-    Q_UNUSED(gameParams);
+
+    GameWidget w(gameParams.ticTacToeSize);
+    w.toggleButton(3, 2);
+    w.show();
 
     return a.exec();
 }

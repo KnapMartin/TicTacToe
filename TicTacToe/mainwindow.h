@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSize>
+
+#include "gamewidget.h"
+#include "constants.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
